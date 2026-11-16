@@ -356,7 +356,7 @@ export default function App() {
           }}
         />
 
-        <div className="view-content-wrapper">
+        <div className={`view-content-wrapper ${currentTab === "Huấn luyện AI" ? "ai-coach-fit-wrapper" : ""}`}>
           {currentTab === "Trang chủ" && (
             <DashboardView
               userStats={userStats}
@@ -375,8 +375,14 @@ export default function App() {
               userStats={userStats}
               onApplyAIWorkoutPlan={(plan) => {
                 setWeeklyProgram((prev) => [plan, ...prev.slice(1)]);
-                setCurrentTab("Chương trình tập");
+                setCurrentTab("Lịch tập");
               }}
+              onAddFoodToLog={(food) =>
+                handleAddFood({
+                  ...food,
+                  id: "food-ai-" + Date.now(),
+                })
+              }
             />
           )}
 
