@@ -648,34 +648,36 @@ export default function ExerciseLibraryView({
         </div>
       )}
 
-      {/* TOP HERO BANNER */}
-      <div className="vault-hero-card">
-        <div className="vault-hero-content">
-          <div className="vault-hero-badge">
-            <Sparkles size={14} />
-            <span>KHO DỮ LIỆU ĐỘNG TÁC THỂ HÌNH CHUẨN HÓA</span>
+      {/* TOP HERO BANNER - COMPACT SLEEK */}
+      <div className="vault-hero-card compact">
+        <div className="vault-hero-content-row">
+          <div className="vault-hero-left">
+            <div className="vault-hero-badge">
+              <Sparkles size={12} />
+              <span>KHO ĐỘNG TÁC CHUẨN Y KHOA</span>
+            </div>
+            <h1 className="vault-hero-title">Kho Bài Tập & Kỹ Thuật Động Tác</h1>
+            <p className="vault-hero-sub">
+              50+ bài tập chuyên sâu với video tư thế, nhịp Tempo 3-1-1-0 và cơ chế hô hấp chuẩn.
+            </p>
           </div>
-          <h1 className="vault-hero-title">Kho Bài Tập & Kỹ Thuật Động Tác</h1>
-          <p className="vault-hero-sub">
-            Thư viện động tác chuyên sâu với chỉ dẫn tư thế chuẩn y khoa, nhịp Tempo 3-1-1-0, cơ chế hô hấp và phân tích lỗi sai giúp phòng tránh chấn thương tối đa.
-          </p>
 
-          <div className="vault-kpi-chips-row">
+          <div className="vault-kpi-chips-row compact">
             <div className="vault-kpi-chip">
               <span className="chip-num">48+</span>
-              <span className="chip-lbl">Bài tập chuẩn hóa</span>
+              <span className="chip-lbl">Bài tập</span>
             </div>
             <div className="vault-kpi-chip">
               <span className="chip-num">8</span>
-              <span className="chip-lbl">Nhóm cơ lớn</span>
+              <span className="chip-lbl">Nhóm cơ</span>
             </div>
             <div className="vault-kpi-chip">
               <span className="chip-num">100%</span>
-              <span className="chip-lbl">Hướng dẫn chi tiết</span>
+              <span className="chip-lbl">Kỹ thuật</span>
             </div>
             <div className="vault-kpi-chip highlight">
               <span className="chip-num">3-1-1-0</span>
-              <span className="chip-lbl">Tempo kích thích cơ</span>
+              <span className="chip-lbl">Tempo</span>
             </div>
           </div>
         </div>
