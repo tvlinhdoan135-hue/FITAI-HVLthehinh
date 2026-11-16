@@ -46,10 +46,10 @@ const COACH_PROFILES: Record<CoachPersona, CoachProfile> = {
 Tôi đã đồng bộ chỉ số thể chất của bạn: **${68}kg · 175cm · Mục tiêu: Tăng cơ nạc**.
 Hôm nay bạn muốn tối ưu giáo trình tập, tăng mức tạ hay chỉnh sửa kỹ thuật động tác nào?`,
     quickPrompts: [
-      "Tối ưu lịch tập 4 buổi Upper/Lower",
-      "Hướng dẫn Bench Press chuẩn form không đau vai",
-      "Cách áp dụng Progressive Overload chuẩn",
-      "Phương pháp khắc phục ngực lệch hai bên",
+      "Tối ưu lịch tập 4 buổi",
+      "Bench Press chuẩn form",
+      "Cách Progressive Overload",
+      "Khắc phục ngực lệch",
     ],
   },
   sarah: {
@@ -63,10 +63,10 @@ Hôm nay bạn muốn tối ưu giáo trình tập, tăng mức tạ hay chỉnh
 Dựa trên chỉ số thể trạng của bạn, mức tiêu hao năng lượng TDEE ước tính khoảng **2.570 kcal/ngày**.
 Bạn cần tôi lên thực đơn tăng cơ nạc, tính calo hay giải đáp về Whey, Creatine & Supplement?`,
     quickPrompts: [
-      "Lên thực đơn 2.200 kcal tăng cơ nạc",
-      "Nên nạp bao nhiêu gram đạm mỗi ngày?",
-      "Ăn gì trước và sau khi tập để tối đa hóa cơ?",
-      "Thời điểm uống Whey & Creatine tốt nhất",
+      "Thực đơn 2.200 kcal tăng cơ",
+      "Nên nạp bao nhiêu gram đạm?",
+      "Ăn gì trước & sau tập?",
+      "Uống Whey & Creatine khi nào?",
     ],
   },
   elena: {
@@ -80,10 +80,10 @@ Bạn cần tôi lên thực đơn tăng cơ nạc, tính calo hay giải đáp 
 Cơ bắp chỉ thực sự phát triển và phòng tránh chấn thương khi khớp xương linh hoạt và cơ được phục hồi tốt.
 Hôm nay bạn có bị đau mỏi nhóm cơ nào, hay cần bài giãn cơ toàn thân sau tập không?`,
     quickPrompts: [
-      "Bài tập khắc phục đau mỏi lưng dưới",
-      "Giãn cơ toàn thân 10 phút sau buổi tập",
-      "Khắc phục khớp vai kêu lục cục khi đẩy tạ",
-      "Khởi động khớp háng trước khi tập Squat",
+      "Khắc phục đau lưng dưới",
+      "Giãn cơ 10 phút sau tập",
+      "Khớp vai kêu khi đẩy tạ",
+      "Khởi động háng trước Squat",
     ],
   },
 };
@@ -364,12 +364,40 @@ Dưới đây là cấu trúc chi tiết buổi tập hôm nay mà bạn có th�
             <div>
               <div className="ai-coach-title-row">
                 <h2>{currentCoach.name}</h2>
-                <span className="ai-badge-chip">HLV TRÍ TUỆ NHÂN TẠO 24/7</span>
+                <span className="ai-badge-chip">HLV AI 24/7</span>
               </div>
               <div className="ai-coach-status">
                 <span className="live-dot" /> {currentCoach.role}
               </div>
             </div>
+          </div>
+
+          {/* Coach Persona Selector Tabs */}
+          <div className="coach-persona-switcher">
+            <button
+              className={`persona-tab-btn ${activePersona === "alex" ? "active" : ""}`}
+              onClick={() => handleSwitchPersona("alex")}
+              title="Coach Alex - Chuyên gia Tăng cơ & Thể hình"
+            >
+              <span>🦾</span>
+              <span className="persona-name">Tăng cơ</span>
+            </button>
+            <button
+              className={`persona-tab-btn ${activePersona === "sarah" ? "active" : ""}`}
+              onClick={() => handleSwitchPersona("sarah")}
+              title="Coach Sarah - Chuyên gia Dinh dưỡng & Calo"
+            >
+              <span>🥗</span>
+              <span className="persona-name">Dinh dưỡng</span>
+            </button>
+            <button
+              className={`persona-tab-btn ${activePersona === "elena" ? "active" : ""}`}
+              onClick={() => handleSwitchPersona("elena")}
+              title="Coach Elena - Chuyên gia Giãn cơ & Phục hồi"
+            >
+              <span>🧘‍♀️</span>
+              <span className="persona-name">Phục hồi</span>
+            </button>
           </div>
 
           {/* Right actions: User context & Reset button */}
@@ -394,42 +422,6 @@ Dưới đây là cấu trúc chi tiết buổi tập hôm nay mà bạn có th�
               <RotateCcw size={13} />
               <span>Làm mới</span>
             </button>
-          </div>
-        </div>
-
-        {/* Coach Persona Selector Bar (Dedicated Sub-Row, Never Clipped) */}
-        <div className="ai-coach-header-sub">
-          <div className="coach-persona-switcher">
-            <button
-              className={`persona-tab-btn ${activePersona === "alex" ? "active" : ""}`}
-              onClick={() => handleSwitchPersona("alex")}
-              title="Coach Alex - Chuyên gia Tăng cơ & Thể hình"
-            >
-              <span>🦾</span>
-              <span className="persona-name">Coach Alex (Tăng cơ)</span>
-            </button>
-            <button
-              className={`persona-tab-btn ${activePersona === "sarah" ? "active" : ""}`}
-              onClick={() => handleSwitchPersona("sarah")}
-              title="Coach Sarah - Chuyên gia Dinh dưỡng & Calo"
-            >
-              <span>🥗</span>
-              <span className="persona-name">Coach Sarah (Dinh dưỡng)</span>
-            </button>
-            <button
-              className={`persona-tab-btn ${activePersona === "elena" ? "active" : ""}`}
-              onClick={() => handleSwitchPersona("elena")}
-              title="Coach Elena - Chuyên gia Giãn cơ & Phục hồi"
-            >
-              <span>🧘‍♀️</span>
-              <span className="persona-name">Coach Elena (Phục hồi)</span>
-            </button>
-          </div>
-
-          <div className="ai-coach-active-badge">
-            <span className="text-[11.5px] text-purple-300/80">
-              Chuyên môn: <strong className="text-white font-medium">{currentCoach.role}</strong>
-            </span>
           </div>
         </div>
       </div>
