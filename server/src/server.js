@@ -102,6 +102,30 @@ let auditLogs = [
   },
 ];
 
+// 0. Trang chào mừng Root
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Chào mừng bạn đến với FitAI API Backend Server!",
+    frontendUrl: "http://localhost:5173",
+    note: "Giao diện người dùng Web của FitAI đang chạy tại cổng Frontend: http://localhost:5173",
+    availableEndpoints: [
+      "/api/status",
+      "/api/admin/ai/metrics",
+      "/api/admin/ai/prompts",
+      "/api/admin/ai/settings",
+      "/api/admin/ai/audit",
+    ],
+  });
+});
+
+app.get("/api", (req, res) => {
+  res.json({
+    success: true,
+    message: "FitAI API Root. Vui lòng truy cập /api/status để kiểm tra trạng thái.",
+  });
+});
+
 // 1. Kiểm tra trạng thái Backend
 app.get("/api/status", (req, res) => {
   res.json({
